@@ -74,6 +74,9 @@ These exercises will teach you to use transactions to ensure consistency and con
 **Reflection:**  
 Subqueries are powerful, but as queries grow more complex, they can become hard to read, maintain, and debug. To address this, we introduce **views**.
 
+![image](https://github.com/user-attachments/assets/c1db86e1-50a2-448a-940d-814c6273f7c1)
+
+
 ---
 
 ### **Create and Use Views**
