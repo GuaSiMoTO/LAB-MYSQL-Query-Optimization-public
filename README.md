@@ -10,66 +10,116 @@
 - Have MySQL installed
 - Have Worbench installed
 
-## Queries :
+# SQL Practice: Warm-Up, Views, Transactions, Subqueries, and Bonus Challenges
 
-- Calculate the average power of the weapons assigned to each Imperial team.
+---
 
-- Get the total strength of the Rebel teams stationed at each base.
+## **Warm-Up Queries**
+These simple queries will help you get familiar with the tables and data:
 
-- List all weapons with power greater than 75 and the Imperial teams to which they are assigned.
+- **Calculate the average power of the weapons assigned to each Imperial team.**
+- **Get the total strength of the Rebel teams stationed at each base.**
 
-- Get a summary of all planned attacks, including the probability of success and the Imperial and Rebel teams involved.
+---
 
-- List all Rebel teams and the probabilities of success of the attacks in which their bases are involved.
+## **Views**
 
-- List the planned attacks with a success probability greater than 70%, including target base information and the assigned Imperial team.
+These exercises focus on creating views to simplify complex queries and make them reusable.
 
-## Vistas
+1. **Imperial Team with the Highest and Lowest Total Strength**  
+   Create a view that identifies the Imperial team with the highest and lowest total strength.
 
-- Find the Imperial team with the highest and lowest total strength
-  
-- List all Rebel teams that have more than 2 members, ordered by the total number of members (Table RebelTeamMembers With Join).
+2. **Rebel Teams with More Than 2 Members**  
+   Create a view to list all Rebel teams with more than 2 members, ordered by the total number of members. Use a join with `RebelTeamMembers`.
 
-- Get all intelligence information about bases with a high-security level.
+3. **Intelligence for High-Security Bases**  
+   Create a view that retrieves all intelligence information for bases with a high-security level.
 
-- Get a summary of the resources available at each location, grouped by the location.
+4. **Summary of Resources by Location**  
+   Create a view to get a summary of the resources available at each location, grouped by location.
 
-- List all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
+5. **Imperial Teams and Weapon Count**  
+   Create a view to list all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
 
-## Subquerys
+---
 
-### Returns the name of the imperial team that has the highest average power of assigned weapons. Includes the average power.
+## **Transactions**
 
-As you have seen subqueries are a powerful tool in SQL that allow you to solve complex problems.However, as queries become more advanced, these subqueries can become difficult to read, maintain and debug.To solve these problems, we can introduce views.
+These exercises will teach you to use transactions to ensure consistency and control over database changes.
 
-### Create a view Weapons used in successful attacks
+1. **Insert and Commit**  
+   Insert a new record into the `RebelTeams` table with a unique team name. Commit the transaction to save the changes.
 
-**Step 1**: Create a view to calculate the average success probability of attacks.
+2. **Insert, Update, and Rollback**  
+   - Insert a new record into the `ImperialTeams` table.
+   - Update the `team_size` of another team.
+   - Rollback the transaction to undo all changes.
 
-**Step 2**: Use the view to filter weapons assigned to teams in successful attacks.
+3. **Multiple Operations with Savepoints**  
+   - Perform three operations:
+     - Insert into the `RebelTeams` table.
+     - Update the `Bases` table.
+     - Delete from the `Intel` table.
+   - Set a savepoint after each operation.
+   - Rollback to the second savepoint and commit the remaining changes.
 
- 
-### Create a view Rebel teams in bases with the lowest security level
+---
 
-**Step 1**: Create a view to identify bases with the lowest security level.
+## **Subqueries**
 
-**Step 2**: Use the view to find the rebel teams assigned to these bases.
+### **Subquery: Imperial Team with the Highest Average Weapon Power**
+- Write a subquery that returns the name of the Imperial team with the highest average power of assigned weapons. Include the average power.
 
-### Create a view Imperial teams without assigned weapons
+**Reflection:**  
+Subqueries are powerful, but as queries grow more complex, they can become hard to read, maintain, and debug. To address this, we introduce **views**.
 
-**Step 1**: Create a view to identify imperial teams with assigned weapons.
+---
 
-### Create a view to identify bases with imperial teams.
+### **Create and Use Views**
 
+1. **Weapons Used in Successful Attacks**
+   - **Step 1**: Create a view to calculate the average success probability of attacks.
+   - **Step 2**: Use the view to filter weapons assigned to teams in successful attacks.
 
+2. **Rebel Teams in Bases with the Lowest Security Level**
+   - **Step 1**: Create a view to identify bases with the lowest security level.
+   - **Step 2**: Use the view to find Rebel teams assigned to these bases.
 
-## Bonus
+3. **Imperial Teams Without Assigned Weapons**
+   - **Step 1**: Create a view to identify Imperial teams with assigned weapons.
+   - **Step 2**: Undefined
+     
+4. **Bases with Imperial Teams**
+   - **Step 1**: Undefined
+   - **Step 2**: Undefined
 
-1. Rebel teams with more soldiers than the average
+---
 
-**Step 1**: Create a view to calculate the average length of intelligence details.
+## **Bonus Challenges**
 
-**Step 2**: Use the view to find bases with details longer than the average.
+1. **Weapons with Power Greater Than 75**  
+   List all weapons with power greater than 75 and the Imperial teams to which they are assigned.
+
+2. **Summary of Planned Attacks**  
+   Get a summary of all planned attacks, including the probability of success and the Imperial and Rebel teams involved.
+
+3. **Rebel Teams and Attack Probabilities**  
+   List all Rebel teams and the probabilities of success of the attacks targeting their bases.
+
+4. **Successful Planned Attacks**  
+   List all planned attacks with a success probability greater than 70%, including target base information and the assigned Imperial team.
+
+5. **Rebel Teams with More Soldiers Than the Average**  
+   - **Step 1**: Create a view to calculate the average number of soldiers in Rebel teams.
+   - **Step 2**: Use the view to identify teams that exceed the average.
+
+6. **Experiment with Indexes**  
+   - Create and test different types of indexes (single-column and composite) on various tables.
+   - Evaluate their impact on query performance.
+   - Write an analysis explaining why the indexes improved (or didn’t improve) the performance, considering:
+     - Query structure.
+     - Table size.
+     - Column cardinality.
 
 
 
