@@ -15,6 +15,8 @@ These simple queries will help you get familiar with the tables and data:
 
 - **Calculate the average power of the weapons assigned to each Imperial team.**
 - **Get the total strength of the Rebel teams stationed at each base.**
+  
+<img src="intro.gif" alt="Descripción de la imagen" width="800" >
 
 ---
 
