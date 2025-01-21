@@ -18,7 +18,7 @@ These simple queries will help you get familiar with the tables and data:
   
   
 <p align="center">
-  <img src="frog.gif" alt="Descripción de la imagen" width="400" >
+  <img src="frog.gif" alt="Descripción de la imagen" height="200" width="400" >
 </p>
 
 ---
