@@ -38,6 +38,8 @@ These exercises focus on creating views to simplify complex queries and make the
 
 5. **Imperial Teams and Weapon Count**  
    Create a view to list all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
+   
+![kermit-window-meme-template-full-03088594](https://github.com/user-attachments/assets/18b61110-faf5-48f8-b035-da6803274acb)
 
 ---
 
