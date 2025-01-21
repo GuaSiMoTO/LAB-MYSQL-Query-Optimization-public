@@ -27,24 +27,19 @@ These exercises focus on creating views to simplify complex queries and make the
 1. **Imperial Team with the Highest and Lowest Total Strength**  
    Create a view that identifies the Imperial team with the highest and lowest total strength.
 
-2. **Rebel Teams with More Than 2 Members**  
-   Create a view to list all Rebel teams with more than 2 members, ordered by the total number of members. Use a join with `RebelTeamMembers`.
-
-3. **Intelligence for High-Security Bases**  
-   Create a view that retrieves all intelligence information for bases with a high-security level.
-
-4. **Summary of Resources by Location**  
+2. **Summary of Resources by Location**  
    Create a view to get a summary of the resources available at each location, grouped by location.
 
-5. **Imperial Teams and Weapon Count**  
+3. **Imperial Teams and Weapon Count**  
    Create a view to list all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
-   
-   ![kermit-window-meme-template-full-03088594](https://github.com/user-attachments/assets/9a023c2b-c45b-47d6-b44b-bc06769d35c7)
+
+     ![kermit-window-meme-template-full-03088594](https://github.com/user-attachments/assets/9a023c2b-c45b-47d6-b44b-bc06769d35c7)
 
 
 ---
 
 ## **Transactions**
+
 
 These exercises will teach you to use transactions to ensure consistency and control over database changes.
 
@@ -63,8 +58,8 @@ These exercises will teach you to use transactions to ensure consistency and con
      - Delete from the `Intel` table.
    - Set a savepoint after each operation.
    - Rollback to the second savepoint and commit the remaining changes.
-   
-<img src="https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82" alt="Descripción de la imagen" height="500" width="800" >
+     
+<img src="https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82" alt="Descripción de la imagen" height="400" width="700" >
 
 
 ---
@@ -83,6 +78,8 @@ Subqueries are powerful, but as queries grow more complex, they can become hard 
 
 ---
 
+<img src="https://github.com/user-attachments/assets/04ed806f-969a-484b-a15c-92b8ca2ae23a" width="300" height="450" align="right">
+
 ### **Create and Use Views**
 
 1. **Weapons Used in Successful Attacks**
@@ -100,6 +97,7 @@ Subqueries are powerful, but as queries grow more complex, they can become hard 
 4. **Bases with Imperial Teams**
    - **Step 1**: Undefined
    - **Step 2**: Undefined
+
 
 ---
 
