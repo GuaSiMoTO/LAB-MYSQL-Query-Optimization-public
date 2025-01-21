@@ -85,7 +85,7 @@ Subqueries are powerful, but as queries grow more complex, they can become hard 
 
 ---
 
-<img src="https://github.com/user-attachments/assets/04ed806f-969a-484b-a15c-92b8ca2ae23a" width="300" height="450" align="right">
+<img src="https://github.com/user-attachments/assets/e8c0d048-d466-4f7f-938e-b7c272984e6d" width="300" height="450" align="right">
 
 ### **Create and Use Views**
 
