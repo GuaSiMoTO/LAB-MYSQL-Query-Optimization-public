@@ -10,10 +10,6 @@
 - Have MySQL installed
 - Have Worbench installed
 
-# SQL Practice: Warm-Up, Views, Transactions, Subqueries, and Bonus Challenges
-
----
-
 ## **Warm-Up Queries**
 These simple queries will help you get familiar with the tables and data:
 
