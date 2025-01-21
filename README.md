@@ -65,8 +65,10 @@ These exercises will teach you to use transactions to ensure consistency and con
    - Rollback to the second savepoint and commit the remaining changes.
 
 ---
-
 ## **Subqueries**
+
+<img src="https://github.com/user-attachments/assets/fa51f17a-3b9a-407c-aa8d-8471bbba5800" width="150" height="200" align="right">
+
 
 ### **Subquery: Imperial Team with the Highest Average Weapon Power**
 - Write a subquery that returns the name of the Imperial team with the highest average power of assigned weapons. Include the average power.
@@ -74,7 +76,6 @@ These exercises will teach you to use transactions to ensure consistency and con
 **Reflection:**  
 Subqueries are powerful, but as queries grow more complex, they can become hard to read, maintain, and debug. To address this, we introduce **views**.
 
-<img src="https://github.com/user-attachments/assets/c1db86e1-50a2-448a-940d-814c6273f7c1" width="400" height="800" align="right">
 
 
 ---
