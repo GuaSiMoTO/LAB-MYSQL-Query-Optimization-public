@@ -63,7 +63,9 @@ These exercises will teach you to use transactions to ensure consistency and con
      - Delete from the `Intel` table.
    - Set a savepoint after each operation.
    - Rollback to the second savepoint and commit the remaining changes.
-![image](https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82)
+   
+<img src="https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82" alt="Descripción de la imagen" height="500" width="800" >
+
 
 ---
 ## **Subqueries**
