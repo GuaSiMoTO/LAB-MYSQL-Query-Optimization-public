@@ -16,7 +16,10 @@ These simple queries will help you get familiar with the tables and data:
 - **Calculate the average power of the weapons assigned to each Imperial team.**
 - **Get the total strength of the Rebel teams stationed at each base.**
   
-<img src="frog.gif" alt="Descripción de la imagen" width="600" >
+  
+<p align="center">
+  <img src="frog.gif" alt="Descripción de la imagen" width="400" >
+</p>
 
 ---
 
@@ -33,7 +36,8 @@ These exercises focus on creating views to simplify complex queries and make the
 3. **Imperial Teams and Weapon Count**  
    Create a view to list all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
 
-     ![kermit-window-meme-template-full-03088594](https://github.com/user-attachments/assets/9a023c2b-c45b-47d6-b44b-bc06769d35c7)
+  
+![kermit-window-meme-template-full-03088594](https://github.com/user-attachments/assets/9a023c2b-c45b-47d6-b44b-bc06769d35c7)
 
 
 ---
@@ -59,8 +63,11 @@ These exercises will teach you to use transactions to ensure consistency and con
    - Set a savepoint after each operation.
    - Rollback to the second savepoint and commit the remaining changes.
      
-<img src="https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82" alt="Descripción de la imagen" height="400" width="700" >
 
+  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/cad19351-125d-4026-bcb4-88cba89b8d82" alt="Descripción de la imagen" height="400" width="700" >
+</p>
 
 ---
 ## **Subqueries**
@@ -126,6 +133,10 @@ Subqueries are powerful, but as queries grow more complex, they can become hard 
      - Query structure.
      - Table size.
      - Column cardinality.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/39bb85a0-20a7-4731-afa1-f0bacf19f7e3" alt="Descripción de la imagen" width="400" >
+</p>
 
 ## Submission
 
