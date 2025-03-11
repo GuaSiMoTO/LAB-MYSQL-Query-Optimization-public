@@ -1,0 +1,74 @@
+-- Warm-Up Queries
+-- These simple queries will help you get familiar with the tables and data:
+use Final_Attack_Imperial;
+
+-- Calculate the average power of the weapons assigned to each Imperial team.
+SELECT ImperialTeams.name, Weapons.name, AVG(Weapons.power) AS avg_power 
+FROM ImperialTeams
+INNER JOIN ImperialTeamWeapons 
+ON ImperialTeams.team_id =  ImperialTeamWeapons.imperial_team_id
+INNER JOIN Weapons
+ON Weapons.weapon_id = ImperialTeamWeapons.weapon_id
+GROUP BY ImperialTeams.name, Weapons.name;
+
+-- Get the total strength of the Rebel teams stationed at each base.
+SELECT Bases.base_id, SUM(RebelTeams.total_force) AS total_strength
+FROM RebelTeams
+JOIN Bases
+ON Bases.base_id = RebelTeams.base_id
+GROUP BY Bases.base_id;
+
+-- Views
+-- These exercises focus on creating views to simplify complex queries and make them reusable.
+
+-- 1. Rebel Team with the Highest and Lowest Total Strength:
+-- Create a view that identifies the Rebel team with the highest and lowest total strength.
+
+CREATE VIEW highest_and_lowest_strength_VIEW AS
+(SELECT name, total_force as strength
+FROM RebelTeams 
+WHERE total_force = (SELECT MAX(total_force) FROM RebelTeams) limit 1)
+UNION
+(SELECT name, total_force AS strength 
+FROM RebelTeams 
+WHERE total_force = (SELECT MIN(total_force) FROM RebelTeams) limit 1);
+
+-- 2. Summary of Resources by Location
+-- Create a view to get a summary of the resources available at each location, grouped by location.
+
+CREATE VIEW summary_resources_VIEW AS
+SELECT Locations.name, GROUP_CONCAT(COALESCE(Bases.resources, '')) AS summary_resources FROM Locations
+JOIN Bases
+On Bases.base_id = Locations.location_id
+GROUP BY Locations.name;
+
+
+-- 3. Imperial Teams and Weapon Count
+-- Create a view to list all Imperial teams and the total number of weapons assigned to each team, ordered by the total number of weapons.
+
+CREATE VIEW total_weapons_Imperial_teams_VIEW AS
+SELECT ImperialTeams.name, COUNT(Weapons.name) AS number_of_weapons FROM ImperialTeams
+INNER JOIN ImperialTeamWeapons
+ON ImperialTeams.team_id = ImperialTeamWeapons.imperial_team_id
+INNER JOIN Weapons
+ON ImperialTeamWeapons.weapon_id = Weapons.weapon_id
+GROUP BY ImperialTeams.name
+ORDER BY number_of_weapons;
+
+-- 1. Insert and Commit
+-- Insert a new record into the RebelTeams table with a unique team name. Commit the transaction to save the changes.
+
+START TRANSACTION;
+INSERT INTO RebelTeams (team_idname, soldier_count, jedi_count, total_force, base_id)
+VALUES ('Quiksilver assasins', 25, 1,26,6);
+COMMIT;
+
+-- 2 . Insert, Update, and Rollback
+-- Insert a new record into the ImperialTeams table.
+-- Update the team_size of another team.
+-- Rollback the transaction to undo all changes.
+
+START TRANSACTION;
+INSERT INTO ImperialTeams (name, team_size, active_missions, total_missions) VALUES ();
+UPDATE ImperialTeams SET team_size = team_size + 50 WHERE team_id = 6;
+ROLLBACK;
