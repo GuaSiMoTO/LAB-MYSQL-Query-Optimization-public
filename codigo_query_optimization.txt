@@ -55,6 +55,8 @@ ON ImperialTeamWeapons.weapon_id = Weapons.weapon_id
 GROUP BY ImperialTeams.name
 ORDER BY number_of_weapons;
 
+-- TRANSACTIONS
+
 -- 1. Insert and Commit
 -- Insert a new record into the RebelTeams table with a unique team name. Commit the transaction to save the changes.
 
@@ -72,3 +74,101 @@ START TRANSACTION;
 INSERT INTO ImperialTeams (name, team_size, active_missions, total_missions) VALUES ();
 UPDATE ImperialTeams SET team_size = team_size + 50 WHERE team_id = 6;
 ROLLBACK;
+
+-- 3. Multiple Operations with Savepoints
+-- Perform three operations:
+	-- Insert into the RebelTeams table.
+	-- Update the Bases table.
+	-- Delete from the Intel table.
+-- Set a savepoint after each operation.
+-- Rollback to the second savepoint and commit the remaining changes.   
+    
+START TRANSACTION;
+INSERT INTO rebelteams (name, soldier_count, jedi_count,total_force,base_id)
+VALUES ('Barroso Fighters', 50, 1,51, 14);
+SAVEPOINT insert_rebelteams;
+UPDATE bases
+SET location = 13
+WHERE base_id = 8;
+SAVEPOINT update_bases;
+DELETE FROM intel
+WHERE intel_id = 13;
+ROLLBACK TO SAVEPOINT update_bases;
+COMMIT;
+
+-- SUBQUERIES
+
+-- Subquery: Imperial Team with the Highest Average Weapon Power
+-- Write a subquery that returns the name of the Imperial team with the highest average power of assigned weapons. Include the average power.
+
+SELECT ImperialTeams.name, (
+    SELECT AVG(Weapons.power)
+    FROM Weapons
+    WHERE Weapons.weapon_id IN (SELECT ImperialTeamWeapons.weapon_id FROM ImperialTeamWeapons WHERE ImperialTeams.team_id = ImperialTeamWeapons.imperial_team_id)) AS avg_power
+FROM ImperialTeams
+ORDER BY avg_power DESC
+LIMIT 1;
+
+-- CREATE AND USE VIEWS
+– 1.  Weapons Used in Successful Attacks
+
+– Step 1: Create a view to calculate the average success probability of attacks
+.
+CREATE VIEW view_avg_attacks AS
+SELECT AVG(success_probability) AS AVG_probability_attacks FROM Attacks;
+
+– Step 2: Use the view to filter weapons assigned to teams in successful attacks.
+
+SELECT ImperialTeams.name, Weapons.name FROM  ImperialTeams
+INNER JOIN ImperialTeamWeapons
+ON ImperialTeamWeapons.imperial_team_id =  ImperialTeams.team_id
+INNER JOIN Weapons
+ON ImperialTeamWeapons.weapon_id = Weapons.weapon_id
+WHERE Weapons.power > (SELECT * FROM view_avg_attacks);
+
+-- 2. Rebel Teams in Bases with the Lowest Security Level
+
+–  Step 1: Create a view to identify bases with the lowest security level
+.
+CREATE VIEW view_lowest_security_level AS
+SELECT base_id FROM Bases
+WHERE security_level = 'Low';
+– Step 2: Use the view to find Rebel teams assigned to these bases.
+
+SELECT * FROM RebelTeams
+WHERE RebelTeams.base_id 
+IN (SELECT base_id FROM view_lowest_security_level);
+
+-- 3. Imperial Teams Without Assigned Weapons
+
+– Step 1: Create a view to identify Imperial teams with assigned weapons
+.
+CREATE OR REPLACE VIEW view_imperialteams_weapons AS
+SELECT ImperialTeams.team_id, ImperialTeams.name AS Imperial_Team, Weapons.name AS Weapon_name
+FROM ImperialTeams
+INNER JOIN ImperialTeamWeapons
+ON ImperialTeams.team_id = ImperialTeamWeapons.imperial_team_id
+INNER JOIN Weapons
+ON ImperialTeamWeapons.weapon_id = Weapons.weapon_id;
+
+– Step 2: Undefined
+
+SELECT * FROM ImperialTeams
+WHERE team_id NOT IN (SELECT team_id FROM view_imperialteams_weapons);
+
+-- 4. Bases with Imperial Teams
+	-- Step 1: Undefined
+
+CREATE OR REPLACE VIEW view_bases_imperialteams AS
+SELECT bases.location as location_id , attacks.imperialteams_id AS imperial_id
+FROM locations
+INNER JOIN bases
+ON bases.location = locations.location_id
+INNER JOIN attacks
+ON bases.base_id = attacks.bases_id;
+
+ 
+-- Step 2: Undefined
+
+SELECT locations.name AS BASES FROM locations
+WHERE location_id IN (SELECT location_id FROM view_bases_imperialteams);
